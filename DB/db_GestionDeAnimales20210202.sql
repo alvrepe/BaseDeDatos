@@ -26,8 +26,28 @@ CREATE TABLE IF NOT EXISTS empleados (
 
 SHOW TABLES;
 
+/* DROP TABLE empleados;*/
+
 DESCRIBE empleados;
 
-ALTE
+ALTER TABLE empleados
+RENAME TO employees;
+
+/*TRUNCATE TABLE employees;*/
+
+ALTER TABLE employees ADD (
+	oficina int
+);
+
+DESCRIBE employees;
+
+ALTER TABLE employees ADD (
+	jefe VARCHAR(20),
+    departamento BIT
+);
+
+
+
+
 
     
