@@ -46,6 +46,18 @@ ALTER TABLE employees ADD (
     departamento BIT
 );
 
+/* cuidado al eliminar un campo */
+
+ALTER TABLE employees DROP COLUMN jefe;
+
+DESCRIBE employees;
+
+ALTER TABLE employees ADD (
+	boss VARCHAR(2)
+);
+
+ALTER TABLE employees MODIFY boss VARCHAR(20);
+
 
 
 
