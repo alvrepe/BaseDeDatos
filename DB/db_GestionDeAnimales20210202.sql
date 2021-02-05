@@ -1,6 +1,6 @@
-CREATE DATABASE if not exists gestionanimales;
+CREATE DATABASE if not exists gestiondeanimales;
 
-USE gestionanimales;
+USE gestiondeanimales;
 
 SHOW DATABASES;
 
@@ -112,11 +112,80 @@ ALTER TABLE tasks
 ADD CONSTRAINT tas_tit_uk
 UNIQUE (title);
 
-SHOW INDEXES FROM tasks;
+SHOW INDEXES FROM employees;
 
 DESCRIBE tasks;
 
-SHOW CREATE TABLE tasks;
+SHOW CREATE TABLE employees;
+
+SHOW TABLES;
+
+/* INDEX */
+
+DROP TABLE IF EXISTS employees;
+
+CREATE TABLE IF NOT EXISTS employees (
+	id INT,
+    name_employee VARCHAR(30),
+    age INT,
+    INDEX (id)
+);
+
+DROP INDEX id ON employees;
+
+CREATE INDEX IDX_id ON employees (id);
+
+/* AUTO INCREMENT Y PRIMARY KEY*/
+
+DROP TABLE IF EXISTS employees;
+
+CREATE TABLE IF NOT EXISTS employees (
+	id INT AUTO_INCREMENT,
+    name_employee VARCHAR(30),
+    age INT,
+    PRIMARY KEY (id)
+);
+
+SHOW CREATE TABLE employees;
+
+ALTER TABLE employees
+MODIFY id INT;
+
+ALTER TABLE employees
+MODIFY id INT AUTO_INCREMENT;
+
+ALTER TABLE employees
+ADD CONSTRAINT PK_employee PRIMARY KEY (id);
+
+/* DEFAULT */
+
+DROP TABLE IF EXISTS employees;
+
+CREATE TABLE IF NOT EXISTS employees (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    name_employee VARCHAR(30),
+    age INT
+);
+
+ALTER TABLE employees
+ALTER age SET DEFAULT 0;
+
+ALTER TABLE employees
+ALTER name_employee SET DEFAULT "NOMBRE";
+
+ALTER TABLE employees
+ALTER age DROP DEFAULT;
+
+
+
+
+
+
+
+
+
+
+
 
 
 
