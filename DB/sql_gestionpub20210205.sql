@@ -87,6 +87,8 @@ ADD CONSTRAINT PK_employees PRIMARY KEY (
     funcion
 );
 
+/*5 AÑADE LAS SIGUIENTES RESTRICCIONES*/
+
 ALTER TABLE pubs 
 MODIFY fecha_apertura DATE NOT NULL,
 MODIFY horario DATE NOT NULL;
@@ -108,6 +110,8 @@ ALTER cantidad SET DEFAULT 1;
 
 CREATE INDEX IDX_localidad
 ON cities (cod_localidad, nombre);
+
+/*6 ELIMINA LAS SIGUIENTES RESTRICCIONES*/
 
 ALTER TABLE owners
 DROP INDEX idx_titular;
