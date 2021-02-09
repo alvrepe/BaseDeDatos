@@ -102,7 +102,7 @@ ADD CONSTRAINT CHK_precio CHECK (precio > 0);
 ALTER TABLE stocks
 ALTER precio SET DEFAULT 1;
 
-CREATE INDEX idx_titular
+CREATE INDEX IDX_titular
 ON owners (dni_titular, nombre);
 
 ALTER TABLE stocks
@@ -114,7 +114,7 @@ ON cities (cod_localidad, nombre);
 /*6 ELIMINA LAS SIGUIENTES RESTRICCIONES*/
 
 ALTER TABLE owners
-DROP INDEX idx_titular;
+DROP INDEX IDX_titular;
 
 ALTER TABLE stocks
 ALTER cantidad DROP DEFAULT;
@@ -123,11 +123,12 @@ ALTER TABLE cities
 DROP INDEX IDX_localidad;
 
 ALTER TABLE stocks
-DROP CHECK CHK_stocks;
+DROP CHECK CHK_precio;
 
 ALTER TABLE stocks
 ALTER precio DROP DEFAULT;
 
+show create table owners;
 
 
  
