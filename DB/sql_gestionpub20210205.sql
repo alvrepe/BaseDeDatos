@@ -79,7 +79,6 @@ ADD CONSTRAINT PRIMARY KEY (cod_articulo);
 ALTER TABLE cities
 ADD CONSTRAINT PRIMARY KEY (cod_localidad);
 
-ALTER TABLE pub_employees drop primary key;
 
 ALTER TABLE pub_employees
 ADD CONSTRAINT PK_employees PRIMARY KEY (
@@ -87,3 +86,45 @@ ADD CONSTRAINT PK_employees PRIMARY KEY (
     dni_empleado,
     funcion
 );
+
+ALTER TABLE pubs 
+MODIFY fecha_apertura DATE NOT NULL,
+MODIFY horario DATE NOT NULL;
+
+ALTER TABLE cities
+MODIFY provincia VARCHAR(40) NOT NULL;
+
+ALTER TABLE stocks
+ADD CONSTRAINT CHK_stocks CHECK (precio > 0);
+
+ALTER TABLE stocks
+ALTER precio SET DEFAULT 1;
+
+CREATE INDEX idx_titular
+ON owners (dni_titular, nombre);
+
+ALTER TABLE stocks
+ALTER cantidad SET DEFAULT 1;
+
+CREATE INDEX IDX_localidad
+ON cities (cod_localidad, nombre);
+
+ALTER TABLE owners
+DROP INDEX idx_titular;
+
+ALTER TABLE stocks
+ALTER cantidad DROP DEFAULT;
+
+ALTER TABLE cities
+DROP INDEX IDX_localidad;
+
+ALTER TABLE stocks
+DROP CHECK CHK_stocks;
+
+ALTER TABLE stocks
+ALTER precio DROP DEFAULT;
+
+
+
+ 
+
