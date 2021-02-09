@@ -97,7 +97,7 @@ ALTER TABLE cities
 MODIFY provincia VARCHAR(40) NOT NULL;
 
 ALTER TABLE stocks
-ADD CONSTRAINT CHK_stocks CHECK (precio > 0);
+ADD CONSTRAINT CHK_precio CHECK (precio > 0);
 
 ALTER TABLE stocks
 ALTER precio SET DEFAULT 1;
