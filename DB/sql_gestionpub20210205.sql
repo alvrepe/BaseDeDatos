@@ -74,14 +74,14 @@ ALTER TABLE employees ADD (
 /* 4 añade las claves primarias de las tablas existencias, localidad y pub_empleado */
 
 ALTER TABLE stocks
-ADD CONSTRAINT PRIMARY KEY (cod_articulo);
+ADD CONSTRAINT pk_stocks PRIMARY KEY (cod_articulo);
 
 ALTER TABLE cities
-ADD CONSTRAINT PRIMARY KEY (cod_localidad);
+ADD CONSTRAINT pk_cities PRIMARY KEY (cod_localidad);
 
 
 ALTER TABLE pub_employees
-ADD CONSTRAINT PK_employees PRIMARY KEY (
+ADD CONSTRAINT pk_employees PRIMARY KEY (
 	cod_pub,
     dni_empleado,
     funcion
