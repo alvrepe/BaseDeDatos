@@ -129,3 +129,51 @@ ALTER TABLE stocks
 ALTER precio DROP DEFAULT;
 
 show create table owners;
+
+
+# 7 crea las siguientes claves ajenas a las tablas ya existentes
+
+ALTER TABLE owners
+ADD CONSTRAINT FK_owners_pubs
+FOREIGN KEY (cod_pub)
+REFERENCES pubs(cod_pub);
+
+ALTER TABLE pub_employees
+ADD CONSTRAINT FK_pub_employees_pubs
+FOREIGN KEY (cod_pub)
+REFERENCES pubs(cod_pub);
+
+ALTER TABLE pub_employees
+ADD CONSTRAINT FK_pub_employees_employees
+FOREIGN KEY (dni_empleado)
+REFERENCES employees(dni_empleado);
+
+ALTER TABLE stocks
+ADD CONSTRAINT FK_stocks_pubs
+FOREIGN KEY (cod_pub)
+REFERENCES pubs(cod_pub);
+
+ALTER TABLE pubs
+ADD CONSTRAINT FK_pubs_cities
+FOREIGN KEY (cod_localidad)
+REFERENCES cities(cod_localidad);
+
+# 8 elimina las claves ajenas creadas en el ejercicio anterior
+
+ALTER TABLE owners
+DROP FOREIGN KEY FK_owners_pubs;
+
+ALTER TABLE pub_employees
+DROP FOREIGN KEY FK_pub_employees_pubs;
+
+ALTER TABLE pub_employees
+DROP FOREIGN KEY FK_pub_employees_employees;
+
+ALTER TABLE stocks
+DROP FOREIGN KEY FK_stocks_pubs;
+
+ALTER TABLE pubs
+DROP FOREIGN KEY FK_pubs_cities;
+
+# 9 Elimina y crea de nuevo las tablas TITULAR, PUB y PUB_EMPLEADO, añadiendo las claves primarias y ajenas, en la definición de cada una, mediante el comando CREATE TABLE.
+
