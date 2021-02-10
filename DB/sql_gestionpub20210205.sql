@@ -129,7 +129,3 @@ ALTER TABLE stocks
 ALTER precio DROP DEFAULT;
 
 show create table owners;
-
-
- 
-
