@@ -206,5 +206,8 @@ CREATE TABLE IF NOT EXISTS pub_employees (
 	cod_pub INT NOT NULL,
     dni_empleado VARCHAR(9) NOT NULL,
     funcion VARCHAR(40) NOT NULL,
-    PRIMARY KEY (cod_pub, dni_empleado, funcion)
+    PRIMARY KEY (cod_pub, dni_empleado, funcion),
+    CONSTRAINT fk_pub_employees_pubs
+    FOREIGN KEY (cod_pub) 
+    REFERENCES pubs(cod_pub)
 );
