@@ -177,3 +177,34 @@ DROP FOREIGN KEY FK_pubs_cities;
 
 # 9 Elimina y crea de nuevo las tablas TITULAR, PUB y PUB_EMPLEADO, añadiendo las claves primarias y ajenas, en la definición de cada una, mediante el comando CREATE TABLE.
 
+DROP TABLE pubs;
+DROP TABLE owners;
+DROP TABLE pub_employees;
+
+CREATE TABLE IF NOT EXISTS pubs (
+	cod_pub INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(40) NOT NULL,
+    licencia_fiscal VARCHAR(40) NOT NULL,
+    domicilio VARCHAR(40),
+    cod_localidad INT NOT NULL,
+    CONSTRAINT fk_pubs
+    FOREIGN KEY (cod_localidad)
+    REFERENCES cities(cod_localidad)
+);
+
+CREATE TABLE IF NOT EXISTS owners (
+	dni_titular VARCHAR(9) PRIMARY KEY,
+    nombre VARCHAR(40) NOT NULL,
+    domicilio VARCHAR(40),
+	cod_pub INT NOT NULL,
+    CONSTRAINT fk_owners
+    FOREIGN KEY (cod_pub)
+    REFERENCES pubs(cod_pub)
+);
+
+CREATE TABLE IF NOT EXISTS pub_employees (
+	cod_pub INT NOT NULL,
+    dni_empleado VARCHAR(9) NOT NULL,
+    funcion VARCHAR(40) NOT NULL,
+    PRIMARY KEY (cod_pub, dni_empleado, funcion)
+);
