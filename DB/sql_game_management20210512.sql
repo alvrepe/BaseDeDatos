@@ -1,3 +1,5 @@
+#EJERCICIO 1
+
 CREATE SCHEMA game_management;
 
 USE game_management;
@@ -41,7 +43,7 @@ CREATE TABLE platforms (
 CREATE TABLE game_platforms (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     game_publisher_id INT NOT NULL,
-    platform_if INT NOT NULL, 
+    platform_id INT NOT NULL, 
     release_year INT NOT NULL,
     CONSTRAINT fk_game_publishers
     FOREIGN KEY (game_publisher_id)
@@ -50,6 +52,7 @@ CREATE TABLE game_platforms (
     FOREIGN KEY (id)
     REFERENCES platforms(id)
 );
+
 
 CREATE TABLE region_sales (
 	region_id INT NOT NULL,
@@ -83,5 +86,72 @@ ALTER TABLE region_sales
 ADD CONSTRAINT fk_region_sales_game_platforms
 FOREIGN KEY (game_platform_id) REFERENCES game_platforms(id);
 
+DROP SCHEMA game_management;
 
+#EJERCICIO 2
 
+CREATE INDEX idx_genres
+ON genres(id);
+
+CREATE INDEX idx_games
+ON games(id, genre_id);
+
+CREATE INDEX idx_publishers
+ON publishers(id);
+
+CREATE INDEX idx_game_publishers
+ON game_publishers(id, game_id, publisher_id);
+
+CREATE INDEX idx_game_platforms
+ON game_platforms(id, game_publisher_id, platform_id);
+
+CREATE INDEX idx_platforms
+ON platforms(id);
+
+CREATE INDEX idx_region_sales
+ON region_sales(region_id, game_platform_id);
+
+CREATE INDEX idx_regions
+ON regions(id);
+
+# EJERCICIO 3
+
+ALTER TABLE region_sales				
+ALTER num_sales SET DEFAULT 0;         
+
+ALTER TABLE game_platforms
+ALTER release_year SET DEFAULT 1989;
+
+ALTER TABLE region_sales					
+ADD CONSTRAINT CHK_region_sales CHECK (num_sales >=0);	
+
+ALTER TABLE game_platforms
+ADD CONSTRAINT CHK_game_platforms CHECK (release_year >= 1989);
+
+ALTER TABLE regions
+ADD CONSTRAINT uc_regions
+UNIQUE (region_name);	
+
+ALTER TABLE publishers
+ADD CONSTRAINT uc_publishers
+UNIQUE (publisher_name);		
+
+# EJERCICIO 4		
+
+ALTER TABLE region_sales
+ALTER num_sales DROP DEFAULT; 
+
+ALTER TABLE game_platforms
+ALTER release_year DROP DEFAULT; 
+
+ALTER TABLE region_sales
+DROP CHECK CHK_region_sales;
+
+ALTER TABLE game_platforms
+DROP CHECK CHK_game_platforms;
+
+ALTER TABLE regions
+DROP INDEX uc_regions;
+
+ALTER TABLE publishers
+DROP INDEX uc_publishers;
