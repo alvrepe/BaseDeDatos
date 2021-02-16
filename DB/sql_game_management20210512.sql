@@ -86,7 +86,7 @@ ALTER TABLE region_sales
 ADD CONSTRAINT fk_region_sales_game_platforms
 FOREIGN KEY (game_platform_id) REFERENCES game_platforms(id);
 
-DROP SCHEMA game_management;
+
 
 #EJERCICIO 2
 
