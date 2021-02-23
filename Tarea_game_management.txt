@@ -1,0 +1,18 @@
+-- 1. Crea los siguientes registros en la tabla genres
+-- a. Mediante un solo comando: Action, Adventure, Fighting, Misc, Platform, Puzzle, 
+-- b. Cada opción un comando en un insert: Racing, Role-Playing, Shooter, Simulation, Sports, Strategy
+
+-- 2. Crea los siguientes registros en la tabla platforms
+-- (1,'Wii U'),(2,'PS5'),(3,'XBOX ONE'),(4,'PS3')
+-- (5,'3DS'),(6,'PS4'),(7,'PC')
+
+-- 3. Crea los siguientes registros en la tabla publisers mediante un solo comando insert
+-- (1,'10TACLE Studios'),(2,'1C Company'),(3,'20th Century Fox Video Games')
+-- (4,'Activision'),(5,'Activision Blizzard'),(6,'Activision Value')
+
+-- 4. Crea los siguientes registros en la tabla regions mediante un solo comando insert
+-- (1,'North America'),(2,'Europe'),(3,'Japan'),(4,'Other')
+
+-- 5. Crea los campos 'created_at' y 'updated_at' para las siguientes tablas:
+-- a. game, game_publisher y game_platform
+-- b. NOTA: los campos deben guardar por defecto la fecha actual
