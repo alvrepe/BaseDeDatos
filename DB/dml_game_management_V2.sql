@@ -58,7 +58,6 @@ VALUES
 ('Activision Value');
 
 select * from publishers;
-
 -- 4. Crea los siguientes registros en la tabla regions mediante un solo comando insert
 -- (1,'North America'),(2,'Europe'),(3,'Japan'),(4,'Other')
 
